@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title> Motivational </title>
+
+	<style>
+		* { font-size : 40px; }
+		h1 {color : white;}
+	</style>
+
+	<script>
+		function show()
+		{
+			//Server
+
+			event.preventDefault();
+			let ans = document.getElementById("ans");
+			let url = "https://api.quotable.io/random";
+
+			//Promise Statement
+
+			fetch (url) 											//request
+			.then(res => res.json()) 									//response
+			.then(data => ans.innerHTML = "Motivational Message : " + "<br>" + data.content + "<br><br>" + "Author : " + "<br>" + data.author)	//data
+			.content(err => ans.innerHTML = "Issue" + err);							//Error
+		}
+	</script>
+</head>
+
+<body style="background-color:green">
+
+<!--Whenever we click the a button random motivational message should appear on the screen -->
+
+	<center>
+		<!--Client-->
+
+		<h1> Motivational Msg Version 2 </h1>
+		<p> Random message from server </p>
+
+		<form onsubmit="show()">
+			<input type= "Submit" value="Get Msg" />
+		</form>
+
+		<h1 id="ans" />
+
+	</center>
+
+</body>
+
+</html>
